@@ -21,12 +21,13 @@ https://github.com/creationix/nvm#installation
 
 - `npm install --global pure-prompt`
 - Install oh-my-zsh: https://github.com/robbyrussell/oh-my-zsh
-- 
 
+## Mac OSX configuration
+- See https://github.com/marianoquevedo/automantic-dotfiles/blob/master/install.sh
 
 
 ## Reference
 - https://sourabhbajaj.com/mac-setup
 - https://github.com/cilindrox/dotfiles
 - https://ohmyz.sh/
-
+- https://github.com/marianoquevedo/automantic-dotfiles/blob/master/install.sh
