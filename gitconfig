@@ -1,0 +1,56 @@
+[user]
+	name = Mariano Quevedo
+	email = 12384762+marianoquevedo@users.noreply.github.com
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[pull]
+	rebase = true
+[color]
+	ui = true
+[alias]
+	lg = log --oneline --decorate --all -graph
+	s = status -s
+	co = checkout
+	ci = commit
+	br = branch
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+	open = !open `git config remote.origin.url`
+	stash-all = stash save --include-untracked
+  	# We wanna grab those pesky un-added files!
+  	# https://git-scm.com/docs/git-stash
+[push]
+	default = simple
+	# "push the current branch back to the branch whose changes are usually integrated into the current branch"
+	# "refuse to push if the upstream branch’s name is different from the local one"
+	# https://git-scm.com/docs/git-config#git-config-pushdefault
+
+  	followTags = true
+	# Because I get sick of telling git to do it manually
+	# https://git-scm.com/docs/git-config#git-config-pushfollowTags
+[status]
+  showUntrackedFiles = all
+  # Sometimes a newly-added folder, since it's only one line in git status, can slip under the radar.
+  # https://git-scm.com/docs/git-config#git-config-statusshowUntrackedFiles
+[credential]
+	helper = osxkeychain
+[diff]
+	tool = sourcetree
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false
+[core]
+	excludesfile = /Users/mariano/.gitignore
+	editor = code --wait
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[help]
+	autocorrect = 5
