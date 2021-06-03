@@ -15,13 +15,12 @@
 	co = checkout
 	ci = commit
 	br = branch
+	branch-name = "!git rev-parse --abbrev-ref HEAD"
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	type = cat-file -t
-	dump = cat-file -p
 	open = !open `git config remote.origin.url`
+	# We wanna grab those pesky un-added files!
+	# https://git-scm.com/docs/git-stash
 	stash-all = stash save --include-untracked
-  	# We wanna grab those pesky un-added files!
-  	# https://git-scm.com/docs/git-stash
 [push]
 	default = simple
 	# "push the current branch back to the branch whose changes are usually integrated into the current branch"
@@ -48,7 +47,7 @@
 	editor = code --wait
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
