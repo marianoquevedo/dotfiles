@@ -28,6 +28,7 @@ brew 'zsh-syntax-highlighting'
 cask 'font-cascadia-code'
 cask 'font-droid-sans-mono-for-powerline'
 cask 'font-inconsolata'
+cask 'font-fira-mono'
 
 
 
