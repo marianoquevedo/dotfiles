@@ -75,6 +75,11 @@ source $HOMEBREW_PREFIX/etc/profile.d/z.sh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Set Spaceship ZSH as a prompt
+SPACESHIP_GIT_BRANCH_PREFIX=
+SPACESHIP_PACKAGE_SHOW=false
+SPACESHIP_DOCKER_SHOW=false
+
 autoload -U promptinit; promptinit
 autoload -Uz colors && colors
 prompt spaceship
+
