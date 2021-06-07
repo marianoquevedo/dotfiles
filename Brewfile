@@ -8,6 +8,7 @@ brew 'curl'
 cask 'docker'
 brew 'docker-completion'
 brew 'git'
+brew 'git-crypt'
 brew 'gnu-sed', args: ['with-default-names']
 brew 'gnu-tar'
 brew 'gnupg2'
