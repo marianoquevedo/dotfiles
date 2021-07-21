@@ -28,6 +28,8 @@ https://github.com/sindresorhus/iterm2-snazzy + `Cascadia Code Font`
 ## Mac OSX configuration
 - See https://github.com/marianoquevedo/automantic-dotfiles/blob/master/install.sh
 
+### uBlock
+[Anti-Paywall](https://raw.githubusercontent.com/llacb47/miscfilters/master/antipaywall.txt)
 
 ## Reference
 - https://sourabhbajaj.com/mac-setup
