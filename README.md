@@ -19,7 +19,12 @@ https://github.com/creationix/nvm#installation
 `npm login`
 
 ### iTerm theme
-https://github.com/sindresorhus/iterm2-snazzy + `Cascadia Code Font`
+
+[Dracula theme](https://draculatheme.com/iterm) + `Cascadia Code Font`
+
+Previous used themes:
+
+- [snazzy](https://github.com/sindresorhus/iterm2-snazzy)
 
 ## Mac OSX configuration
 - See https://github.com/marianoquevedo/automantic-dotfiles/blob/master/install.sh
