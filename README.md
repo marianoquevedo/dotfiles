@@ -14,13 +14,9 @@ https://brew.sh/
 ## Install Node
 https://github.com/creationix/nvm#installation
 
-`nvm install 10 && nvm install 12 && nvm install 14 && nvm alias default 10 && nvm use default`
+`nvm install 14 && nvm alias default 14 && nvm use default`
 
 `npm login`
-
-## Prompt config
-
-- `npm install -g spaceship-prompt`
 
 ### iTerm theme
 https://github.com/sindresorhus/iterm2-snazzy + `Cascadia Code Font`
