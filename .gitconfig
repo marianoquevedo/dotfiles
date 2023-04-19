@@ -1,7 +1,6 @@
-[includeIf "gitdir:~/dev/"]
-	path = .gitconfig-personal
-[includeIf "gitdir:~/klarna/"]
-	path = .gitconfig-professional
+[user]
+	name = Mariano Quevedo
+	email = 12384762+marianoquevedo@users.noreply.github.com
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
