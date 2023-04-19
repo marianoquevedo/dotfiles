@@ -35,9 +35,6 @@ Previous used themes:
 
 - [snazzy](https://github.com/sindresorhus/iterm2-snazzy)
 
-## Mac OSX configuration
-- See https://github.com/marianoquevedo/automantic-dotfiles/blob/master/install.sh
-
 ### uBlock
 [Anti-Paywall](https://raw.githubusercontent.com/llacb47/miscfilters/master/antipaywall.txt)
 
