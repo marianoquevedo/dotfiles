@@ -1,8 +1,11 @@
 # dotfiles
 A collection of my dotfiles
 
-## Install Brew & Brew Bundle
-https://brew.sh/
+## Run install.sh
+
+```
+sh ./install.sh
+```
 
 ## Install utilities
 
@@ -10,11 +13,17 @@ https://brew.sh/
 - Install [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh#basic-installation) 
 - Install [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh)
 
+## Install fzf (avoid brew so we can have shortcuts installed)
+
+```
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
 
 ## Install Node
 https://github.com/creationix/nvm#installation
 
-`nvm install 14 && nvm alias default 14 && nvm use default`
+`nvm install 18 && nvm alias default 18 && nvm use default`
 
 `npm login`
 

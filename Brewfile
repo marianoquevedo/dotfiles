@@ -13,7 +13,6 @@ brew 'gnu-sed', args: ['with-default-names']
 brew 'gnu-tar'
 brew 'gnupg2'
 cask 'iterm2'
-brew 'fzf'
 brew 'jq'
 brew 'shellcheck'
 brew 'tfswitch'
