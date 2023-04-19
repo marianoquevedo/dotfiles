@@ -36,7 +36,7 @@ Previous used themes:
 - [snazzy](https://github.com/sindresorhus/iterm2-snazzy)
 
 ### uBlock
-[Anti-Paywall](https://raw.githubusercontent.com/llacb47/miscfilters/master/antipaywall.txt)
+[Anti-Paywall](https://raw.githubusercontent.com/liamengland1/miscfilters/master/antipaywall.txt)
 
 ## Reference
 - https://sourabhbajaj.com/mac-setup
