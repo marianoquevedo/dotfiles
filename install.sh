@@ -118,6 +118,9 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false;ok
 running "Disable smart dashes as they’re annoying when typing code"
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false;ok
 
+running "Display battery percentage"
+defaults write com.apple.menuextra.battery ShowPercent YES;ok
+
 ###############################################################################
 bot "Trackpad, mouse, keyboard, Bluetooth accessories, and input"
 ###############################################################################
