@@ -27,6 +27,12 @@ https://github.com/creationix/nvm#installation
 
 `npm login`
 
+## Git
+
+```shell
+cp .gitignore ~/ 
+```
+
 ### iTerm theme
 
 [Dracula theme](https://draculatheme.com/iterm) + `Cascadia Code Font`

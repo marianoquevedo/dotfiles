@@ -43,7 +43,7 @@
 [mergetool]
 	prompt = false
 [core]
-	excludesfile = /Users/mariano/.gitignore
+	excludesfile = ~/.gitignore
 	editor = code --wait
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
