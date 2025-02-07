@@ -1,6 +1,7 @@
 [user]
 	name = Mariano Quevedo
 	email = 12384762+marianoquevedo@users.noreply.github.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINbJqFuVvyPLFHEuPr4GpHc0gmiyc1TJEfW+B6tsgYcP
 [init]
 defaultBranch = main
 [filter "lfs"]

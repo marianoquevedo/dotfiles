@@ -93,10 +93,6 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false;ok
 running "Remove duplicates in the “Open With” menu (also see 'lscleanup' alias)"
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;ok
 
-running "Display ASCII control characters using caret notation in standard text views"
-# Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
-defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true;ok
-
 running "Disable automatic termination of inactive apps"
 defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true;ok
 
@@ -108,9 +104,6 @@ defaults write com.apple.helpviewer DevMode -bool true;ok
 
 running "Reveal IP, hostname, OS, etc. when clicking clock in login window"
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName;ok
-
-running "Restart automatically if the computer freezes"
-sudo systemsetup -setrestartfreeze on;ok
 
 running "Disable smart quotes as they’re annoying when typing code"
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false;ok
@@ -133,15 +126,6 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1;ok
 running "Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3;ok
 
-running "Use scroll gesture with the Ctrl (^) modifier key to zoom"
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144;ok
-running "Follow the keyboard focus while zoomed in"
-defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true;ok
-
-running "Disable press-and-hold for keys in favor of key repeat"
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false;ok
-
 running "Disable swipe to navigate back and forth"
 defaults write .GlobalPreferences AppleEnableSwipeNavigateWithScrolls 0;ok
 
@@ -149,8 +133,8 @@ running "Set a blazingly fast keyboard repeat rate"
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 10;ok
 
-# running "Disable auto-correct"
-# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false;ok
+running "Set three finger drag"
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -int 1;ok
 
 ###############################################################################
 bot "Configuring the Screen"
@@ -160,7 +144,7 @@ running "Require password immediately after sleep or screen saver begins"
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0;ok
 
-running "Save screenshots to the desktop"
+running "Save screenshots to screenshots folder"
 defaults write com.apple.screencapture location -string "${HOME}/Documents/screenshots";ok
 
 running "Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)"
@@ -172,12 +156,6 @@ bot "Finder Configs"
 running "Disable window animations and Get Info animations"
 defaults write com.apple.finder DisableAllAnimations -bool true;ok
 
-# running "Show hidden files by default"
-# defaults write com.apple.finder AppleShowAllFiles -bool true;ok
-
-# running "Show all filename extensions"
-# defaults write NSGlobalDomain AppleShowAllExtensions -bool true;ok
-
 running "Show status bar"
 defaults write com.apple.finder ShowStatusBar -bool true;ok
 
@@ -187,20 +165,11 @@ defaults write com.apple.finder ShowPathbar -bool true;ok
 running "Allow text selection in Quick Look"
 defaults write com.apple.finder QLEnableTextSelection -bool true;ok
 
-# running "Display full POSIX path as Finder window title"
-# defaults write com.apple.finder _FXShowPosixPathInTitle -bool true;ok
-
 running "When performing a search, search the current folder by default"
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf";ok
 
 running "Disable the warning when changing a file extension"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false;ok
-
-running "Enable spring loading for directories"
-defaults write NSGlobalDomain com.apple.springing.enabled -bool true;ok
-
-running "Remove the spring loading delay for directories"
-defaults write NSGlobalDomain com.apple.springing.delay -float 0;ok
 
 running "Avoid creating .DS_Store files on network volumes"
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true;ok
@@ -282,40 +251,25 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true;ok
 bot "Terminal & iTerm2"
 ###############################################################################
 
-# running "Only use UTF-8 in Terminal.app"
-# defaults write com.apple.terminal StringEncodings -array 4;ok
-#
-# running "Use a modified version of the Solarized Dark theme by default in Terminal.app"
-# TERM_PROFILE='Solarized Dark xterm-256color';
-# CURRENT_PROFILE="$(defaults read com.apple.terminal 'Default Window Settings')";
-# if [ "${CURRENT_PROFILE}" != "${TERM_PROFILE}" ]; then
-# 	open "./configs/${TERM_PROFILE}.terminal";
-# 	sleep 1; # Wait a bit to make sure the theme is loaded
-# 	defaults write com.apple.terminal 'Default Window Settings' -string "${TERM_PROFILE}";
-# 	defaults write com.apple.terminal 'Startup Window Settings' -string "${TERM_PROFILE}";
-# fi;
-
 #running "Enable “focus follows mouse” for Terminal.app and all X11 apps"
 # i.e. hover over a window and start `typing in it without clicking first
-defaults write com.apple.terminal FocusFollowsMouse -bool true
-#defaults write org.x.X11 wm_ffm -bool true;ok
-running "Installing the Solarized Light theme for iTerm (opening file)"
-open "./configs/Solarized Light.itermcolors";ok
-running "Installing the Patched Solarized Dark theme for iTerm (opening file)"
-open "./configs/Solarized Dark Patch.itermcolors";ok
+# defaults write com.apple.terminal FocusFollowsMouse -bool true
 
-running "Don’t display the annoying prompt when quitting iTerm"
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false;ok
-running "hide tab title bars"
-running "animate split-terminal dimming"
-defaults write com.googlecode.iterm2 AnimateDimming -bool true;ok
-defaults write com.googlecode.iterm2 HotkeyChar -int 96;
-defaults write com.googlecode.iterm2 HotkeyCode -int 50;
-defaults write com.googlecode.iterm2 FocusFollowsMouse -int 1;
-defaults write com.googlecode.iterm2 HotkeyModifiers -int 262401;
-running "Make iTerm2 load new tabs in the same directory"
-/usr/libexec/PlistBuddy -c "set \"New Bookmarks\":0:\"Custom Directory\" Recycle" ~/Library/Preferences/com.googlecode.iterm2.plist
-ok
+# running "Don’t display the annoying prompt when quitting iTerm"
+# defaults write com.googlecode.iterm2 PromptOnQuit -bool false;ok
+
+# running "hide tab title bars"
+
+# running "animate split-terminal dimming"
+# defaults write com.googlecode.iterm2 AnimateDimming -bool true;ok
+# defaults write com.googlecode.iterm2 HotkeyChar -int 96;
+# defaults write com.googlecode.iterm2 HotkeyCode -int 50;
+# defaults write com.googlecode.iterm2 FocusFollowsMouse -int 1;
+# defaults write com.googlecode.iterm2 HotkeyModifiers -int 262401;
+
+# running "Make iTerm2 load new tabs in the same directory"
+# /usr/libexec/PlistBuddy -c "set \"New Bookmarks\":0:\"Custom Directory\" Recycle" ~/Library/Preferences/com.googlecode.iterm2.plist
+# ok
 
 ###############################################################################
 bot "Activity Monitor"
@@ -333,6 +287,7 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0;ok
 running "Sort Activity Monitor results by CPU usage"
 defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0;ok
+
 
 ###############################################################################
 # Kill affected applications                                                  #
