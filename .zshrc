@@ -26,7 +26,7 @@ export ZSH="/Users/marianoquevedo/.oh-my-zsh"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker node zsh-autosuggestions)
+plugins=(git docker node zsh-autosuggestions terraform colors)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -52,10 +52,11 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,state,cputime,uco
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # syntax highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # aliases
 alias zshconfig="code ~/.zshrc"
@@ -74,12 +75,59 @@ source $HOMEBREW_PREFIX/etc/profile.d/z.sh
 # iTerm integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# take colors from
+#https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
+
 # Set Spaceship ZSH as a prompt
 SPACESHIP_GIT_BRANCH_PREFIX=
+SPACESHIP_GIT_BRANCH_COLOR=173
 SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_DOCKER_SHOW=false
+SPACESHIP_PYTHON_PREFIX="- "
+SPACESHIP_PYTHON_SHOW=true
+SPACESHIP_GCLOUD_PREFIX="- GCP "
+SPACESHIP_GCLOUD_SYMBOL=""
+SPACESHIP_GCLOUD_COLOR=29
+SPACESHIP_VENV_SHOW=false
 
+# prompt
 autoload -U promptinit; promptinit
-autoload -Uz colors && colors
-prompt spaceship
+# autoload -Uz colors && colors
 
+source "/opt/homebrew/opt/spaceship/spaceship.zsh"
+
+# Set up fzf key bindings and fuzzy completion
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fzf-git
+source ~/fzf-git.sh/fzf-git.sh
+
+# --- setup fzf theme ---
+fg="#CBE0F0"
+bg="#011628"
+bg_highlight="#143652"
+purple="#B388FF"
+blue="#06BCE4"
+cyan="#2CF9ED"
+
+export FZF_DEFAULT_OPTS="--color=fg:${fg},bg:${bg},hl:${purple},fg+:${fg},bg+:${bg_highlight},hl+:${purple},info:${blue},prompt:${cyan},pointer:${cyan},marker:${cyan},spinner:${cyan},header:${cyan}"
+
+# bat
+export BAT_THEME=Monokai Extended Origin
+
+# add local Postgres to PATH
+path+=('/Applications/Postgres.app/Contents/Versions/15/bin')
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/marianoquevedo/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/marianoquevedo/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/marianoquevedo/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/marianoquevedo/google-cloud-sdk/completion.zsh.inc'; fi
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# poetry
+path+="$HOME/.local/bin:$PATH"

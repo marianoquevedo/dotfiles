@@ -1,6 +1,8 @@
 [user]
 	name = Mariano Quevedo
 	email = 12384762+marianoquevedo@users.noreply.github.com
+[init]
+defaultBranch = main
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
@@ -10,17 +12,18 @@
 [color]
 	ui = true
 [alias]
-	lg = log --oneline --decorate --all -graph
-	s = status -s
+	lg = log --oneline --decorate --graph
+	s = status
 	co = checkout
 	ci = commit
 	br = branch
 	branch-name = "!git rev-parse --abbrev-ref HEAD"
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	open = !open `git config remote.origin.url`
-	# We wanna grab those pesky un-added files!
+		# We wanna grab those pesky un-added files!
 	# https://git-scm.com/docs/git-stash
 	stash-all = stash save --include-untracked
+	smain = !git checkout main && git pull origin main
+	newb = "!f() { git checkout main && git pull origin main && git checkout -b \"$1\"; }; f"
 [push]
 	default = simple
 	# "push the current branch back to the branch whose changes are usually integrated into the current branch"
@@ -36,20 +39,29 @@
   # https://git-scm.com/docs/git-config#git-config-statusshowUntrackedFiles
 [credential]
 	helper = osxkeychain
-[diff]
-	tool = sourcetree
-[difftool]
-	prompt = false
-[mergetool]
-	prompt = false
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/marianoquevedo/.gitignore
 	editor = code --wait
+[diff]
+  tool = vscode
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+  tool = vscode
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
+[help]
+	autocorrect = 5
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
+	template = /Users/marianoquevedo/.stCommitMsg
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[help]
-	autocorrect = 5
