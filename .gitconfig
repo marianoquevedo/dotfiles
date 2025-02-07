@@ -40,7 +40,7 @@ defaultBranch = main
 [credential]
 	helper = osxkeychain
 [core]
-	excludesfile = /Users/marianoquevedo/.gitignore
+	excludesfile = ~/.gitignore
 	editor = code --wait
 [diff]
   tool = vscode
@@ -58,10 +58,7 @@ defaultBranch = main
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [commit]
 	gpgsign = true
-	template = /Users/marianoquevedo/.stCommitMsg
+	template = ~/.stCommitMsg
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
